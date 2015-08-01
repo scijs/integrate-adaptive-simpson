@@ -41,7 +41,7 @@ require('integrate-adaptive-simpson')( f, 0.01, 1, 3.1e-6 )
 requires 2077 function evaluations, a savings of 93%!
 
 
-Computation of a more modest integral like $\int_0^2 \sin(x)\,dx$ may still save about a factor of two on function evaluations (17 for adaptive vs. 45 for regular Simpson's Rule to acheive an absolute error of $1 \cdot 10^{-8}$). See [examples/comparison.js](examples/comparison.js) for a comparison.
+Computation of a more modest integral like $\int_0^\pi \sin(x)\,dx$ may still save about a factor of two on function evaluations (17 for adaptive vs. 45 for regular Simpson's Rule to acheive an absolute error of $1 \cdot 10^{-8}$). See [examples/comparison.js](examples/comparison.js) for a comparison.
 
 ## API
 

@@ -41,7 +41,7 @@ require('integrate-adaptive-simpson')( f, 0.01, 1, 3.1e-6 )
 requires 2077 function evaluations, a savings of 93%!
 
 
-Computation of a more modest integral like <img alt="undefined" valign="middle" src="docs/images/int_02-sinxdx-e474f19aa8.png" width="106" height="31.5"> may still save about a factor of two on function evaluations (17 for adaptive vs. 45 for regular Simpson's Rule to acheive an absolute error of <img alt="undefined" valign="middle" src="docs/images/1-cdot-10-8-09bd84e939.png" width="70" height="20.5">). See [examples/comparison.js](examples/comparison.js) for a comparison.
+Computation of a more modest integral like <img alt="undefined" valign="middle" src="docs/images/int_0pi-sinxdx-073b62952c.png" width="108" height="28.5"> may still save about a factor of two on function evaluations (17 for adaptive vs. 45 for regular Simpson's Rule to acheive an absolute error of <img alt="undefined" valign="middle" src="docs/images/1-cdot-10-8-09bd84e939.png" width="70" height="20.5">). See [examples/comparison.js](examples/comparison.js) for a comparison.
 
 ## API
 

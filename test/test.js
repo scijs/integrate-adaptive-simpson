@@ -2,7 +2,6 @@
 
 var adaptiveSimpson = require('../lib')
   , assert = require('chai').assert
-  , richardson = require('richardson-extrapolation')
   , simpson = require('integrate-simpson')
 
 describe("Adaptive Simpson integration", function() {

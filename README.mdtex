@@ -45,7 +45,7 @@ Computation of a more modest integral like $\int_0^\pi \sin(x)\,dx$ may still sa
 
 ## API
 
-#### `require('integrate-adaptive-simpson')( f, a, b [, tol [, maxdepth]] )`
+#### `require('integrate-adaptive-simpson')( f, a, b [, tol=1e-8 [, maxdepth=20]] )`
 **Arguments:**
 - `f`: The function to be integrated. A function of one variable that returns a value.
 - `a`: The lower limit of integration, $a$.

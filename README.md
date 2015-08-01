@@ -45,7 +45,7 @@ Computation of a more modest integral like <img alt="undefined" valign="middle" 
 
 ## API
 
-#### `require('integrate-adaptive-simpson')( f, a, b [, tol [, maxdepth]] )`
+#### `require('integrate-adaptive-simpson')( f, a, b [, tol=1e-8 [, maxdepth=20]] )`
 **Arguments:**
 - `f`: The function to be integrated. A function of one variable that returns a value.
 - `a`: The lower limit of integration, <img alt="undefined" valign="middle" src="docs/images/a-a1c2708a7a.png" width="15" height="13">.

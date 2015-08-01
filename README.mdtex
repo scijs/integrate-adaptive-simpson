@@ -5,7 +5,7 @@
 
 ## Introduction
 
-This module computes the definite integral $$\int_a^b f(x) \, dx$$ using [Romberg Integration](https://en.wikipedia.org/wiki/Romberg%27s_method) based on [Simpson's Rule](https://en.wikipedia.org/wiki/Simpson%27s_rule). It uses [Richardson Extrapolation](https://en.wikipedia.org/wiki/Richardson_extrapolation) to estimate the error and recursively subdivide intervals until the error tolerance is met. The code is adapted (with gratitude!) from the pseudocode in [Romberg Integration and Adaptive Quadrature](http://www.math.utk.edu/~ccollins/refs/Handouts/rich.pdf).
+This module computes the definite integral $$\int_a^b f(x) \, dx$$ using [Romberg Integration](https://en.wikipedia.org/wiki/Romberg%27s_method) based on [Simpson's Rule](https://en.wikipedia.org/wiki/Simpson%27s_rule). It uses [Richardson Extrapolation](https://en.wikipedia.org/wiki/Richardson_extrapolation) to estimate the error and recursively subdivide intervals until the error tolerance is met. The code is adapted from the pseudocode in [Romberg Integration and Adaptive Quadrature](http://www.math.utk.edu/~ccollins/refs/Handouts/rich.pdf).
 
 ## Install
 

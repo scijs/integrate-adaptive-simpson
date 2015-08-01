@@ -45,13 +45,13 @@ Computation of a more modest integral like <img alt="undefined" valign="middle" 
 
 ## API
 
-#### `require('integrate-adaptive-simpson')( f, a, b [, tol=1e-8 [, maxdepth=20]] )`
+#### `require('integrate-adaptive-simpson')( f, a, b [, tol, maxdepth]] )`
 **Arguments:**
 - `f`: The function to be integrated. A function of one variable that returns a value.
 - `a`: The lower limit of integration, <img alt="undefined" valign="middle" src="docs/images/a-a1c2708a7a.png" width="15" height="13">.
 - `b`: The upper limit of integration, <img alt="undefined" valign="middle" src="docs/images/b-5891343d52.png" width="13" height="18">.
-- `tol`: The relative error required for an interval to be subdivided, based on Richardson extraplation. Be careful—the total accumulated error may be significantly less and result in more function evaluations than necessary.
-- `maxdepth`: The maximum recursion depth. If reached, computation continues and a warning is output to the console.
+- `tol`: The relative error required for an interval to be subdivided, based on Richardson extraplation. Default tolerance is `1e-8`. Be careful—the total accumulated error may be significantly less and result in more function evaluations than necessary.
+- `maxdepth`: The maximum recursion depth. Default depth is `20`. If reached, computation continues and a warning is output to the console.
 
 **Returns**: The computed value of the definite integral.
 

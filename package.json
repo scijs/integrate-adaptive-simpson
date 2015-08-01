@@ -1,5 +1,5 @@
 {
-  "name": "ode-midpoint",
+  "name": "integrate-adaptive-simpson",
   "version": "1.0.1",
   "description": "Integrate a system of ODEs using the Second Order Runge-Kutta (Midpoint) method",
   "main": "lib/index.js",
@@ -8,17 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/scijs/ode-midpoint.git"
+    "url": "git://github.com/scijs/integrate-adaptive-simpson.git"
   },
   "keywords": [
     "scijs",
-    "ode",
-    "midpoint",
-    "runge-kutta",
+    "integral",
+    "definite-integral",
     "integration",
-    "differential-equations",
     "calculus",
-    "first-order"
+    "adaptive"
   ],
   "author": "Ricky Reusser",
   "license": "MIT",
@@ -30,8 +28,7 @@
     "gulp-pdftocairo": "^0.2.0",
     "gulp-tap": "^0.1.3",
     "integrate-simpson": "^1.0.3",
-    "mocha": "^2.2.5",
-    "richardson-extrapolation": "^1.0.3"
+    "mocha": "^2.2.5"
   },
   "dependencies": {
     "compute-array-constructors": "^1.0.0",

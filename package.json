@@ -2,9 +2,10 @@
   "name": "integrate-adaptive-simpson",
   "version": "1.0.3",
   "description": "Integrate a system of ODEs using the Second Order Runge-Kutta (Midpoint) method",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "semistandard && mocha",
+    "lint": "semistandard"
   },
   "repository": {
     "type": "git",
@@ -23,13 +24,9 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.0.0",
-    "gulp-filter": "^2.0.2",
-    "gulp-latex": "^1.0.1",
-    "gulp-markdown-equations": "^1.2.0",
-    "gulp-pdftocairo": "^0.2.0",
-    "gulp-tap": "^0.1.3",
     "integrate-simpson": "^1.0.3",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "semistandard": "^7.0.5"
   },
   "dependencies": {
     "compute-array-constructors": "^1.0.0",

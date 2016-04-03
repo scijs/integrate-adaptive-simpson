@@ -58,7 +58,6 @@ Computation of a more modest integral like $\int_0^\pi \sin(x)\,dx$ may still sa
 ## References
 Colins, C., [Romberg Integration and Adaptive Quadrature Course Notes](http://www.math.utk.edu/~ccollins/refs/Handouts/rich.pdf).
 
+## License
 
-## Credits
-
-(c) 2015 Ricky Reusser. MIT License
+(c) 2015 Scijs Authors. MIT License.

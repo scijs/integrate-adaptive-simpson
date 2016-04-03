@@ -3,6 +3,7 @@
 
 var adaptiveSimpson = require('../');
 var assert = require('chai').assert;
+var sinon = require('sinon');
 // var simpson = require('integrate-simpson');
 
 describe('Adaptive Simpson integration', function () {
@@ -39,7 +40,6 @@ describe('Adaptive Simpson integration', function () {
       return Math.sin(x);
     };
     var value = adaptiveSimpson(f, 0, Math.PI);
-    console.log('Evaluated f(x) ' + evaluations + ' times');
     assert.closeTo(value, 2, 1e-10, '= 2');
   });
 
@@ -53,7 +53,33 @@ describe('Adaptive Simpson integration', function () {
 
     // Selected this tolerance with trial and error to minimize evaluations:
     var v1 = adaptiveSimpson(f, 0.01, 1, 6e-4, 20);
-    console.log('Evaluated f(x) ' + evaluations + ' times');
     assert.closeTo(v1, -0.342553, 1e-5, '= 2');
+  });
+
+  it('integrates 3 * x + 10 from 0 to 10', function () {
+    var g = function (x) {
+      return 3 * x + 10;
+    }
+    var value = adaptiveSimpson(g, 0, 10, 1);
+    assert.closeTo(value, 250, 1e-5, '= 250');
+
+    var value = adaptiveSimpson(g, 0, 10, 0.9);
+    assert.closeTo(value, 250, 1e-5, '= 250');
+  });
+
+  it('Prints one console warn when tolerance exceeded', function () {
+    var _origWarn = console.warn;
+    console.warn = sinon.spy(_origWarn);
+
+    var f = function (x) {
+      return Math.cos(1 / x) / x;
+    };
+
+    // Selected this tolerance with trial and error to minimize evaluations:
+    var v1 = adaptiveSimpson(f, 0.01, 1, 0, 15);
+    assert.closeTo(v1, -0.342553, 1e-3, '= 2');
+    assert.equal(console.warn.callCount, 1, 'console.warn called once');
+
+    console.warn = _origWarn;
   });
 });

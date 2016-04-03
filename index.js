@@ -16,10 +16,7 @@ function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
   err = (s2 - V0) / 15;
 
   if (depth > maxdepth) {
-    if (!state.warned && console.warn) {
-      console.warn('integrate-adaptive-simpson: Warning: maximum recursion depth (' + maxdepth + ') exceeded');
-      state.warned = true;
-    }
+    state.maxDepthCount++;
     return s2 + err;
   } else if (Math.abs(err) < tol) {
     return s2 + err;
@@ -33,7 +30,7 @@ function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
 
 function Integrator (f, a, b, tol, maxdepth) {
   var state = {
-    warned: false
+    maxDepthCount: 0
   };
 
   if (tol === undefined) {
@@ -49,5 +46,11 @@ function Integrator (f, a, b, tol, maxdepth) {
 
   var V0 = (fa + 4 * fm + fb) * (b - a) / 6;
 
-  return adsimp(f, a, b, fa, fm, fb, V0, tol, maxdepth, 1, state);
+  var result = adsimp(f, a, b, fa, fm, fb, V0, tol, maxdepth, 1, state);
+
+  if (state.maxDepthCount > 0 && console.warn) {
+    console.warn('integrate-adaptive-simpson: Warning: maximum recursion depth (' + maxdepth + ') exceeded ' + state.maxDepthCount + ' times');
+  }
+
+  return result;
 }

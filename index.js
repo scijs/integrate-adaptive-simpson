@@ -2,6 +2,8 @@
 
 module.exports = Integrator;
 
+var _isNaN = Number.isNaN || isNaN;
+
 // This algorithm adapted from pseudocode in:
 // http://www.math.utk.edu/~ccollins/refs/Handouts/rich.pdf
 function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
@@ -10,6 +12,17 @@ function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
   h = b - a;
   f1 = f(a + h * 0.25);
   f2 = f(b - h * 0.25);
+
+  if (_isNaN(f1)) {
+    state.nanEncountered = true;
+    return;
+  }
+
+  if (_isNaN(f2)) {
+    state.nanEncountered = true;
+    return;
+  }
+
   sl = h * (fa + 4 * f1 + fm) / 12;
   sr = h * (fm + 4 * f2 + fb) / 12;
   s2 = sl + sr;
@@ -30,7 +43,8 @@ function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
 
 function Integrator (f, a, b, tol, maxdepth) {
   var state = {
-    maxDepthCount: 0
+    maxDepthCount: 0,
+    nanEncountered: false,
   };
 
   if (tol === undefined) {

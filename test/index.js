@@ -43,6 +43,16 @@ describe('Adaptive Simpson integration', function () {
     assert.closeTo(value, 2, 1e-10, '= 2');
   });
 
+  it('stops immediately when NaN encountered', function () {
+    var evaluations = 0;
+    var f = function (x) {
+      evaluations++;
+      return Math.sin(x);
+    };
+    var value = adaptiveSimpson(f, 0, Math.PI);
+    assert.closeTo(value, 2, 1e-10, '= 2');
+  });
+
   it('integrates an oscillatory function', function () {
     // See: http://www.wolframalpha.com/input/?i=integrate+cos%281%2Fx%29%2Fx+from+x%3D0.01+to+x%3D1
     var evaluations = 0;

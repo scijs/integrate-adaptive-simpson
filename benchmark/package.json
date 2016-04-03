@@ -1,0 +1,16 @@
+{
+  "name": "benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "integrate-adaptive-simpson": "1.0.5",
+    "scijs-benchmark": "git@github.com:rreusser/scijs-benchmark.git",
+    "table": "^3.7.8"
+  }
+}

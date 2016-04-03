@@ -59,11 +59,11 @@ describe('Adaptive Simpson integration', function () {
   it('integrates 3 * x + 10 from 0 to 10', function () {
     var g = function (x) {
       return 3 * x + 10;
-    }
+    };
     var value = adaptiveSimpson(g, 0, 10, 1);
     assert.closeTo(value, 250, 1e-5, '= 250');
 
-    var value = adaptiveSimpson(g, 0, 10, 0.9);
+    value = adaptiveSimpson(g, 0, 10, 0.9);
     assert.closeTo(value, 250, 1e-5, '= 250');
   });
 

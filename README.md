@@ -54,7 +54,7 @@ Computation of a more modest integral like <img alt="&bsol;int&lowbar;0&Hat;&bso
 - `tol`: The relative error required for an interval to be subdivided, based on Richardson extraplation. Default tolerance is `1e-8`. Be careful—the total accumulated error may be significantly less and result in more function evaluations than necessary.
 - `maxdepth`: The maximum recursion depth. Default depth is `20`. If reached, computation continues and a warning is output to the console.
 
-**Returns**: The computed value of the definite integral.
+**Returns**: The computed value of the definite integral. If `NaN` is encountered, will exit early with value `NaN` and a console warning.
 
 ## References
 Colins, C., [Romberg Integration and Adaptive Quadrature Course Notes](http://www.math.utk.edu/~ccollins/refs/Handouts/rich.pdf).

@@ -44,13 +44,35 @@ describe('Adaptive Simpson integration', function () {
   });
 
   it('stops immediately when NaN encountered', function () {
-    var evaluations = 0;
+    var nanEvaluations = 0;
     var f = function (x) {
-      evaluations++;
+      if (x > 0.2 && x < 0.3) {
+        nanEvaluations++;
+        return NaN;
+      }
       return Math.sin(x);
     };
     var value = adaptiveSimpson(f, 0, Math.PI);
-    assert.closeTo(value, 2, 1e-10, '= 2');
+    assert.equal(nanEvaluations, 1);
+    assert.isNaN(value)
+  });
+
+  it('stops quickly when infinity encountered', function () {
+    // Inifnity carries through to NaN pretty quickly, so we'll avoid a separate
+    // check, but it will bail pretty quickly:
+    var infinityEvaluations = 0;
+    var f = function (x) {
+      if (x > 0.2 && x < 0.3) {
+        infinityEvaluations++;
+        return Infinity;
+      }
+      return Math.sin(x);
+    };
+    var value = adaptiveSimpson(f, 0, Math.PI, 1e-10, 5);
+
+    // This would be like 100000 if not caught:
+    assert(infinityEvaluations < 10);
+    assert.isNaN(value)
   });
 
   it('integrates an oscillatory function', function () {

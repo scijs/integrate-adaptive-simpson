@@ -2,23 +2,27 @@
 
 module.exports = Integrator;
 
-var _isNaN = Number.isNaN || isNaN;
-
 // This algorithm adapted from pseudocode in:
 // http://www.math.utk.edu/~ccollins/refs/Handouts/rich.pdf
 function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
-  var h, f1, f2, sl, sr, s2, m, V1, V2, err;
+  if (state.nanEncountered) {
+    return NaN;
+  }
+
+  var h, f1, f2, sl, sr, s2, m, V1, V2, err, ret;
 
   h = b - a;
   f1 = f(a + h * 0.25);
   f2 = f(b - h * 0.25);
 
-  if (_isNaN(f1)) {
+  // Simple check for NaN:
+  if (f1 !== f1) {
     state.nanEncountered = true;
     return;
   }
 
-  if (_isNaN(f2)) {
+  // Simple check for NaN:
+  if (f2 !== f2) {
     state.nanEncountered = true;
     return;
   }
@@ -35,8 +39,21 @@ function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
     return s2 + err;
   } else {
     m = a + h * 0.5;
+
     V1 = adsimp(f, a, m, fa, f1, fm, sl, tol * 0.5, maxdepth, depth + 1, state);
+
+    if (V1 !== V1) {
+      state.nanEncountered = true;
+      return NaN;
+    }
+
     V2 = adsimp(f, m, b, fm, f2, fb, sr, tol * 0.5, maxdepth, depth + 1, state);
+
+    if (V2 !== V2) {
+      state.nanEncountered = true;
+      return NaN;
+    }
+
     return V1 + V2;
   }
 }
@@ -62,8 +79,12 @@ function Integrator (f, a, b, tol, maxdepth) {
 
   var result = adsimp(f, a, b, fa, fm, fb, V0, tol, maxdepth, 1, state);
 
-  if (state.maxDepthCount > 0 && console.warn) {
-    console.warn('integrate-adaptive-simpson: Warning: maximum recursion depth (' + maxdepth + ') exceeded ' + state.maxDepthCount + ' times');
+  if (state.maxDepthCount > 0 && console && console.warn) {
+    console.warn('integrate-adaptive-simpson: Warning: maximum recursion depth (' + maxdepth + ') reached ' + state.maxDepthCount + ' times');
+  }
+
+  if (state.nanEncountered && console && console.warn) {
+    console.warn('integrate-adaptive-simpson: Warning: NaN encountered. Halting early.');
   }
 
   return result;

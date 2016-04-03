@@ -1,7 +1,8 @@
-# integrate-adaptive-simpson [![Build Status](https://travis-ci.org/scijs/integrate-adaptive-simpson.svg)](https://travis-ci.org/scijs/integrate-adaptive-simpson) [![npm version](https://badge.fury.io/js/integrate-adaptive-simpson.svg)](http://badge.fury.io/js/integrate-adaptive-simpson) [![Dependency Status](https://david-dm.org/scijs/integrate-adaptive-simpson.svg)](https://david-dm.org/scijs/integrate-adaptive-simpson)
+# integrate-adaptive-simpson
+
+[![Build Status](https://travis-ci.org/scijs/integrate-adaptive-simpson.svg)](https://travis-ci.org/scijs/integrate-adaptive-simpson) [![npm version](https://badge.fury.io/js/integrate-adaptive-simpson.svg)](http://badge.fury.io/js/integrate-adaptive-simpson) [![Dependency Status](https://david-dm.org/scijs/integrate-adaptive-simpson.svg)](https://david-dm.org/scijs/integrate-adaptive-simpson) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
 
 > Compute a definite integral of one variable using [Simpson's Rule](https://en.wikipedia.org/wiki/Simpson%27s_rule) with adaptive quadrature
-
 
 ## Introduction
 

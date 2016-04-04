@@ -54,7 +54,7 @@ describe('Adaptive Simpson integration', function () {
     };
     var value = adaptiveSimpson(f, 0, Math.PI);
     assert.equal(nanEvaluations, 1);
-    assert.isNaN(value)
+    assert.isNaN(value);
   });
 
   it('stops quickly when infinity encountered', function () {
@@ -72,7 +72,7 @@ describe('Adaptive Simpson integration', function () {
 
     // This would be like 100000 if not caught:
     assert(infinityEvaluations < 10);
-    assert.isNaN(value)
+    assert.isNaN(value);
   });
 
   it('integrates an oscillatory function', function () {

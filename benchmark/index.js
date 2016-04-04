@@ -10,9 +10,9 @@ var bench = new Benchmark({
   maxSamples: 1000,
   getTime: process.hrtime,
   getTimeDiff: function (t1, t2) {
-    return (t2[0] - t1[0]) * 1e3 + (t2[1] - t1[1]) * 1e-6
+    return (t2[0] - t1[0]) * 1e3 + (t2[1] - t1[1]) * 1e-6;
   }
-})
+});
 
 function f (x) {
   return Math.cos(1 / x) / x;
@@ -28,6 +28,9 @@ bench
   })
 
   .run(function (err, results) {
+    if (err) {
+      console.log('Error: ', err);
+    }
     console.log(table(bench.toTable()));
   });
 

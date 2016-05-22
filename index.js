@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = Integrator;
+module.exports = integrate;
 
 // This algorithm adapted from pseudocode in:
 // http://www.math.utk.edu/~ccollins/refs/Handouts/rich.pdf
@@ -58,7 +58,7 @@ function adsimp (f, a, b, fa, fm, fb, V0, tol, maxdepth, depth, state) {
   }
 }
 
-function Integrator (f, a, b, tol, maxdepth) {
+function integrate (f, a, b, tol, maxdepth) {
   var state = {
     maxDepthCount: 0,
     nanEncountered: false

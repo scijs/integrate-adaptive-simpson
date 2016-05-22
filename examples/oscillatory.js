@@ -1,6 +1,6 @@
 'use strict';
 
-var romberg = require('../lib');
+var romberg = require('../');
 var simpson = require('integrate-simpson');
 var value, evaluations;
 

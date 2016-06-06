@@ -19,17 +19,21 @@ $ npm install integrate-adaptive-simpson
 To compute the definite integral <p align="center"><img alt="&bsol;int&lowbar;&lcub;0&period;01&rcub;&Hat;&lcub;1&rcub; &bsol;frac&lcub;1&rcub;&lcub;x&rcub;&bsol;cos&bsol;left&lpar;&bsol;frac&lcub;1&rcub;&lcub;x&rcub;&bsol;right&rpar;&bsol;&comma;dx&comma;" valign="middle" src="images/int_0011-frac1xcosleftfrac1xrightdx-c5d6a6f216.png" width="177" height="56.5"></p> execute:
 
 ```javascript
+var integrate = require('integrate-adaptive-simpson');
+
 function f (x) {
   return Math.cos(1 / x) / x);
 }
 
-require('integrate-adaptive-simpson')(f, 0.01, 1, 1e-8)
+intiegrate(f, 0.01, 1, 1e-8);
 // => -0.3425527480294604
 ```
 
 To integrate a vector function, you may import the vectorized version. To compute a contour integral of, say, <img alt="1 &sol; z" valign="middle" src="images/1-z-32ebeece91.png" width="34.5" height="33"> about <img alt="z&lowbar;0 &equals; 0" valign="middle" src="images/z_0-0-227c53dd15.png" width="59" height="31">, that is, <p align="center"><img alt="&bsol;oint &bsol;frac&lcub;dz&rcub;&lcub;z&rcub; &equals; 2&bsol;pi i&comma;" valign="middle" src="images/oint-fracdzz-2pi-i-3243136d9d.png" width="114" height="50.5"></p>
 
 ```javascript
+var integrate = require('integrate-adaptive-simpson/vector');
+
 integrate(function (f, theta) {
   // z = unit circle:
   var c = Math.cos(theta);
@@ -74,7 +78,7 @@ Compute the definite integral of vector function f from a to b.
 - `f`: The function to be integrated. The first argument is an array of length `n` into which the output must be written. The second argument is the scalar value of the independent variable.
 - `a`: The lower limit of integration, <img alt="a" valign="middle" src="images/a-2217a6870d.png" width="15" height="28">.
 - `b`: The upper limit of integration, <img alt="b" valign="middle" src="images/b-224c764dec.png" width="13" height="28">.
-- `tol`: The relative error required for an interval to be subdivided, based on Richardson extraplation. Default tolerance is `1e-8`. Be careful—the total accumulated error may be significantly less and result in more function evaluations than necessary.
+- `tol`: The relative error required for an interval to be subdivided, based on Richardson extraplation. Default tolerance is `1e-8`.
 - `maxdepth`: The maximum recursion depth. Default depth is `20`. If reached, computation continues and a warning is output to the console.
 
 **Returns**: An `Array` representing The computed value of the definite integral.

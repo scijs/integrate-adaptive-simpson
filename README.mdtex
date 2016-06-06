@@ -19,17 +19,21 @@ $ npm install integrate-adaptive-simpson
 To compute the definite integral $$\int_{0.01}^{1} \frac{1}{x}\cos\left(\frac{1}{x}\right)\,dx,$$ execute:
 
 ```javascript
+var integrate = require('integrate-adaptive-simpson');
+
 function f (x) {
   return Math.cos(1 / x) / x);
 }
 
-require('integrate-adaptive-simpson')(f, 0.01, 1, 1e-8)
+intiegrate(f, 0.01, 1, 1e-8);
 // => -0.3425527480294604
 ```
 
 To integrate a vector function, you may import the vectorized version. To compute a contour integral of, say, $1 / z$ about $z_0 = 0$, that is, $$\oint \frac{dz}{z} = 2\pi i,$$
 
 ```javascript
+var integrate = require('integrate-adaptive-simpson/vector');
+
 integrate(function (f, theta) {
   // z = unit circle:
   var c = Math.cos(theta);

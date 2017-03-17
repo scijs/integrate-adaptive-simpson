@@ -22,10 +22,10 @@ To compute the definite integral <p align="center"><img alt="&bsol;int&lowbar;&l
 var integrate = require('integrate-adaptive-simpson');
 
 function f (x) {
-  return Math.cos(1 / x) / x);
+  return Math.cos(1 / x) / x;
 }
 
-intiegrate(f, 0.01, 1, 1e-8);
+integrate(f, 0.01, 1, 1e-8);
 // => -0.3425527480294604
 ```
 
